@@ -1,0 +1,1 @@
+Escriptura des de FileStream

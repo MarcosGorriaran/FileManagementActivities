@@ -1,0 +1,1 @@
+Escriptura des de FileStreamEscriptura amb StreamWriter en mode Append

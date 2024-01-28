@@ -10,8 +10,10 @@ namespace ACT1
             const string WrongTargetFileError = "El nombre del archivo debe de acabar en {0}";
             const string ErrorFolderNotFound = "Es necesario que crea el directorio files en la raiz del programa";
             const string ErrorFileNotFound = "El archivo {0} no existe, se creara el archivo y se escribira en el";
+            const string AskForText = "Proporcioname texto para guardar en el archivo";
             const string TargetFile = ".txt";
             string fileName="";
+            string text;
             bool error;
             try 
             {
@@ -31,7 +33,9 @@ namespace ACT1
             }catch(FileNotFoundException)
             {
                 Console.WriteLine(ErrorFileNotFound, fileName);
-                CheckAllFileObjects(fileName);
+                Console.WriteLine(AskForText);
+                text = Console.ReadLine()??"";
+                CheckAllFileObjects(fileName, text);
             }
             catch(Exception ex)
             {
@@ -45,13 +49,13 @@ namespace ACT1
             FileReadFileObject(file);
             FileReadFileStreamObject(file);
         }
-        public static void CheckAllFileObjects(string file)
+        public static void CheckAllFileObjects(string file, string text)
         {
-            FileWriteFileObject(file);
+            FileWriteFileObject(file, text);
             CheckAllFileReadObjects(file);
-            FileWriteFileStreamObject(file);
+            FileWriteFileStreamObject(file, text);
             CheckAllFileReadObjects(file);
-            StreamWriter(file);
+            StreamWriter(file, text);
             CheckAllFileReadObjects(file);
         }
         public static void FileReadFileObject(string file)
@@ -76,41 +80,39 @@ namespace ACT1
                 Console.WriteLine(temp.GetString(b, 0, readLen));
             }
         }
-        public static void FileWriteFileStreamObject(string file)
+        public static void FileWriteFileStreamObject(string file, string text)
         {
             string path = Path.GetFullPath("..\\..\\..\\files\\" + file);
             using FileStream fs = File.Create(path);
 
-            byte[] info = new UTF8Encoding(true).GetBytes("Escriptura des de FileStream");
+            byte[] info = new UTF8Encoding(true).GetBytes(text);
             fs.Write(info, 0, info.Length);
         }
-        public static void FileWriteFileObject(string file)
+        public static void FileWriteFileObject(string file, string text)
         {
             string path = Path.GetFullPath(@"..\..\..\files\" + file);
             if (!File.Exists(path))
             {
                 using StreamWriter sw = File.CreateText(path);
-                sw.WriteLine("Welcome ");
-                sw.WriteLine("to ");
-                sw.WriteLine("File Handling");
+                sw.WriteLine(text);
                 sw.Close();
-                string createText = "Hello world!" + Environment.NewLine;
+                string createText = text + Environment.NewLine;
                 File.WriteAllText(path, createText);
 
-                string appendText = "Nova línia" + Environment.NewLine;
+                string appendText = text + Environment.NewLine;
                 File.AppendAllText(path, appendText);
                 
             }
             
         }
-        public static void StreamWriter(string file)
+        public static void StreamWriter(string file, string text)
         {
             string path = Path.GetFullPath(@"..\..\..\files\" + file);
             //using StreamWriter sw = new StreamWriter(path);
             //sw.WriteLine("Escriptura amb StreamWriter ");
 
             using StreamWriter sw = new StreamWriter(path, append: true);
-            sw.WriteLine("Escriptura amb StreamWriter en mode Append");
+            sw.WriteLine(text);
         }
     }
 }

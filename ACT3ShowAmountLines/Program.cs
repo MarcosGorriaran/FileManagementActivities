@@ -1,17 +1,19 @@
-﻿namespace ACT2
+﻿namespace ACT3
 {
     public class Execute
     {
         public static void Main()
         {
-            const string AskFileDirectory = "Proporcioname la direccion del archivo que desees que acceda: ";
+            const string AskFileDirectory = "Proporcioname la direccion del archivo que desees que cuente sus lineas de texto: ";
+            const string ShowAmountLines = "El archivo posee la siguiente cantidad de lineas: ";
             const string FileNotExistsError = "El archivo especificado no existe";
             const string DirectoryNotExistsError = "La ruta especificada no existe";
             try
             {
                 Console.Write(AskFileDirectory);
-                Console.Write(ReadFirstLine(Console.ReadLine() ?? ""));
-            }catch (FileNotFoundException)
+                Console.Write(ShowAmountLines+CountLinesFromFile(Console.ReadLine() ?? ""));
+            }
+            catch (FileNotFoundException)
             {
                 Console.WriteLine(FileNotExistsError);
             }
@@ -24,10 +26,16 @@
                 Console.Write(ex);
             }
         }
-        public static string ReadFirstLine(string fileName)
+        public static int CountLinesFromFile(string fileName)
         {
             StreamReader sr = new StreamReader(fileName);
-            return sr.ReadLine()??"";
+            int lines=0;
+            while (sr.ReadLine() != null)
+            {
+                lines++;
+            }
+            sr.Close();
+            return lines;
         }
     }
 }

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT1UserMakesAfile", "ACT1U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT2ReadFirstLine", "ACT2ReadFirstLine\ACT2ReadFirstLine.csproj", "{B3DA398F-BBB1-4FFB-AFAC-A7636D2C8A8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT3ShowAmountLines", "ACT3ShowAmountLines\ACT3ShowAmountLines.csproj", "{8E0CE74B-B999-4002-A6C6-30226A43C2DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B3DA398F-BBB1-4FFB-AFAC-A7636D2C8A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3DA398F-BBB1-4FFB-AFAC-A7636D2C8A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3DA398F-BBB1-4FFB-AFAC-A7636D2C8A8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E0CE74B-B999-4002-A6C6-30226A43C2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0CE74B-B999-4002-A6C6-30226A43C2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E0CE74B-B999-4002-A6C6-30226A43C2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E0CE74B-B999-4002-A6C6-30226A43C2DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

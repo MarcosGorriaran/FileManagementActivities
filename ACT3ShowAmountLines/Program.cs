@@ -28,14 +28,7 @@
         }
         public static int CountLinesFromFile(string fileName)
         {
-            StreamReader sr = new StreamReader(fileName);
-            int lines=0;
-            while (sr.ReadLine() != null)
-            {
-                lines++;
-            }
-            sr.Close();
-            return lines;
+            return File.ReadLines(fileName).Count();
         }
     }
 }
